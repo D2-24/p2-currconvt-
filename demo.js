@@ -14,17 +14,18 @@ sbt.addEventListener("click",function(event)
     const from = data.get("from");              //make value of select option's tag string(country name) not index
     const to = data.get("to");
 
+    const errclassadd = ['visible','border','border-danger-subtle','text-danger'];
     if(amount<0)
     {
         err.classList.remove("invisible");
-        err.classList.add("visible");
+        err.classList.add(...errclassadd);
         err.textContent="Enter valid amount!!!";
         return;
     }else if(from=="select" || to=="select")
     {
         err.classList.remove("invisible");
-        err.classList.add("visible");
-        err.textContent="Select valid currency";
+        err.classList.add(...errclassadd);
+        err.textContent="Select valid currency!!!";
         return;
     }
     getdata(amount,from,to);
@@ -61,6 +62,9 @@ function showresult(result)
     const resultvalclass=["bg-info","bg-opacity-10","border","border-info","rounded-end","p-2"]
     resultval.classList.add(...resultvalclass);                       //learned about spread operator
     resultval.textContent=result;
+
+    err.classList.add("invisible");
+    err.classList.remove("visible");
 }
 
 
